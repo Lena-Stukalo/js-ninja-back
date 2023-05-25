@@ -1,25 +1,16 @@
 const express = require('express')
-
+const cntrl = require("../../controllers/heros");
+const { cntrlWrapper } = require("../../helpers");
 const router = express.Router()
 
-router.get('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.get('/', cntrlWrapper(cntrl.getAll))
 
-router.get('/:heroId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.get('/:heroId', cntrlWrapper(cntrl.getHeroById))
 
-router.post('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.post('/', cntrlWrapper(cntrl.createHero))
 
-router.delete('/:heroId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.delete('/:heroId', cntrlWrapper(cntrl.deleteById))
 
-router.put('/:heroId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.put('/:heroId', cntrlWrapper(cntrl.updateById))
 
 module.exports = router
