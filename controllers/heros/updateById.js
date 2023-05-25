@@ -3,7 +3,7 @@ const {RequestError}= require("../../helpers");
 
 const updateById = async (req, res, next) => {
   const result = await Hero.findByIdAndUpdate(
-    req.params.contactId,
+    req.params.heroId,
     req.body,
     { new: true }
   );
