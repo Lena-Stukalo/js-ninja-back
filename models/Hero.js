@@ -16,6 +16,9 @@ superpowers: {type:String,
   required: true},
 catch_phrase:{type:String,
   required: true},
+  images:{
+    type:[String],
+  }
 },{ versionKey: false, timestamps: true })
 
 const addSchema = Joi.object({
@@ -24,6 +27,7 @@ const addSchema = Joi.object({
   origin_description: Joi.string().required(),
   superpowers: Joi.string().required(),
   catch_phrase:Joi.string().required(),
+  images:Joi.array().items(Joi.string()),
 });
 const updateSchema=Joi.object({
   nickname: Joi.string(),
@@ -31,10 +35,15 @@ const updateSchema=Joi.object({
   origin_description: Joi.string(),
   superpowers: Joi.string(),
   catch_phrase:Joi.string(),
+  images:Joi.string(),
+})
+const addImageSchema=Joi.object({
+  image:Joi.string().required()
 })
 const schemas = {
   addSchema,
   updateSchema,
+  addImageSchema
 };
 heroShcema.post("save", hendleSave);
 const Hero = model("hero", heroShcema);
