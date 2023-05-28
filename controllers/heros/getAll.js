@@ -13,7 +13,7 @@ const getAll = async (req, res, next) => {
     }
   res.status(200).json(response);
   if (!result) {
-    throw RequestError(404, "Not found");
+    next( RequestError(404, "Not found"));
   }
 };
 module.exports = getAll;

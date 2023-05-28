@@ -4,7 +4,7 @@ const {RequestError}= require("../../helpers");
 const deleteById = async (req, res, next) => {
     const result = await Hero.findByIdAndRemove(req.params.heroId);
     if (!result) {
-      throw RequestError(404, "Not found");
+      next( RequestError(404, "Not found"));
     }
     res.json(result);
 };
