@@ -7,6 +7,7 @@ const createHero = async (req, res, next) => {
         img.push(file.path)
       });
     }
+    console.log(img)
     const result = await Hero.create({ ...req.body, images:[...img]});
     res.status(201).json(result);
 };
