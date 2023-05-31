@@ -13,7 +13,7 @@ const updateById = async (req, res, next) => {
     { ...req.body, $push: { images: [...img] } },
     { new: true }
   );
-  console.log(result);
+
   if (!result) {
     throw RequestError(404, "Not found");
   }
